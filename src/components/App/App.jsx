@@ -19,8 +19,11 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import TributePage from '../TributePage/TributePage';
+
 
 import './App.css';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -36,10 +39,18 @@ function App() {
       <div>
         <Nav />
         <Switch>
+    
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect exact from="/" to="/home" />
 
           {/* Visiting localhost:5173/about will show the about page. */}
+
+
+          {/* <TributePage/> */}
+     
+        
+
+
           <Route
             // shows AboutPage at all times (logged in or not)
             exact
