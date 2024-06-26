@@ -9,6 +9,9 @@ function InfoPage() {
   return (
     <div className="container">
       <p>Info Page</p>
+      <p>
+        Contact Info:  KaliaVang511@Gmail.com
+      </p>
     </div>
   );
 }

@@ -23,6 +23,7 @@ import TributePage from '../TributePage/TributePage';
 
 
 import './App.css';
+import AddTribute from '../AddTribute/AddTribute';
 
 
 function App() {
@@ -44,11 +45,19 @@ function App() {
           <Redirect exact from="/" to="/home" />
 
           {/* Visiting localhost:5173/about will show the about page. */}
+    
+          <ProtectedRoute
+            exact
+            path="/addtribute">
+           <AddTribute />
+          </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/tributePage">
+           <TributePage />
+          </ProtectedRoute>
 
-          {/* <TributePage/> */}
-     
-        
 
 
           <Route
