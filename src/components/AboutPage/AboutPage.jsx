@@ -51,51 +51,51 @@ function AboutPage() {
 
       <form onSubmit={handleSubmit}>
         <input
-        text='text'
+        type='text'
         placeholder='First Name'
         value={firstName}
         onChange={(event)=> setFirstName(event.target.value)}
         />
 
         <input
-        text='text'
+        type='text'
         placeholder='Middle Name '
         value={middleName}
         onChange={(event)=> setMiddleName(event.target.value)}
         />
       
       <input
-        text='text'
+        type='text'
         placeholder='Last Name'
         value={lastName}
         onChange={(event)=> setLastName(event.target.value)}
         />
       <input
-        text='text'
+        type='text'
         placeholder='obituary'
         value={obituary}
         onChange={(event)=> setObituary(event.target.value)}
         />
       <input
-        text='text'
+        type='text'
         placeholder='image'
         value={image}
         onChange={(event)=> setImage(event.target.value)}
         />
       <input
-        text='text'
+        type='text'
         placeholder='video'
         value={video}
         onChange={(event)=> setVideo(event.target.value)}
         />
       <input
-        text='text'
+        type='text'
         placeholder='Date of Birth'
         value={dateOfBirth}
         onChange={(event)=> setDateofBirth(event.target.value)}
         />
          <input
-        text='text'
+        type='text'
         placeholder='Date of Death'
         value={dateOfDeath}
         onChange={(event)=> setDateOfDeath(event.target.value)}

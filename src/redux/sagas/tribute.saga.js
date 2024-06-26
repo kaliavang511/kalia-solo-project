@@ -13,10 +13,10 @@ function* fetchTribute(){
 
 function * addTribute(action){
     try{
-        yield((axios.post,'/api/tribute',action.payload))
+        yield call(axios.post, '/api/tribute', action.payload);
         yield put({type: 'FETCH_TRIBUTE'})
      } catch (error){
-            console.log('error with post request'.error)
+            console.log('error with post request',error)
     }
 }
 
