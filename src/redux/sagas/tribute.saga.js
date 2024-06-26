@@ -21,8 +21,19 @@ function * addTribute(action){
 }
 
 
+function* deleteTribute(action) {
+    try {
+        yield call(axios.delete, `/api/tribute/${action.payload}`);
+        yield put({ type: 'FETCH_TRIBUTE' });
+    } catch (error) {
+        console.log('Error with delete request', error);
+    }
+}
+
+
 function * tributeSaga(){
     yield takeLatest('FETCH_TRIBUTE',fetchTribute)
     yield takeLatest('ADD_TRIBUTE',addTribute)
+    yield takeLatest('DELETE_ITEM',deleteTribute)
 }
 export default tributeSaga

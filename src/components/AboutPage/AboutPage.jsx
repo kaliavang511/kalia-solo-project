@@ -44,7 +44,13 @@ function AboutPage() {
     setDateofBirth('');
     setDateOfDeath('');
   };
-
+  const handleDelete = (itemId) => {
+    console.log("Delete Clicked");
+    console.log("Item ID is:", itemId);
+    dispatch({ type: 'DELETE_ITEM', payload: itemId})
+    return;
+  
+  }
 
   return (
     <div className="container">
@@ -126,6 +132,8 @@ function AboutPage() {
             }
             <p>{item.date_of_birth}</p>
             <p>{item.date_of_death}</p>
+            <button onClick={() => handleDelete(item.id)}>Delete</button>
+           
           </div>
         ))}
       </div>
