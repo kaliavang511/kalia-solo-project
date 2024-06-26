@@ -11,7 +11,18 @@ function* fetchTribute(){
     }
 }
 
+function * addTribute(action){
+    try{
+        yield((axios.post,'/api/tribute',action.payload))
+        yield put({type: 'FETCH_TRIBUTE'})
+     } catch (error){
+            console.log('error with post request'.error)
+    }
+}
 
 
-
-export default fetchTribute
+function * tributeSaga(){
+    yield takeLatest('FETCH_TRIBUTE',fetchTribute)
+    yield takeLatest('ADD_TRIBUTE',addTribute)
+}
+export default tributeSaga

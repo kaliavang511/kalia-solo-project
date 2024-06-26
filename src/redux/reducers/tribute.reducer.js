@@ -1,3 +1,4 @@
+
 const TributeReducer = (state = [], action) => {
     switch (action.type) {
       case "SET_TRIBUTE_ITEM":
@@ -6,5 +7,9 @@ const TributeReducer = (state = [], action) => {
         return state;
     }
   };
+
+
   
-  export default TributeReducer;
+  
+  
+  export default TributeReducer
