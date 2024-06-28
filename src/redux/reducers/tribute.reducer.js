@@ -19,11 +19,13 @@ const tributeReducer = (state = [], action) => {
       : item
   );
 
-      
-      
+    case 'ADD_TRIBUTE_SUCCESS':
+        return [...state, action.payload]; 
     default:
-      return state;
+        return state;
+}
   }
-};
+
+
 
 export default tributeReducer;
