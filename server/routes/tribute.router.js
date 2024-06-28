@@ -62,18 +62,42 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
 });
 
-router.put('/:id', (req, res) => {
-  const idToUpdate = req.params.id;
-  const sqlText = `UPDATE tribute SET First_Name = $1 WHERE id = $2`;
-  pool.query(sqlText, [req.body.First_Name, idToUpdate])
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  const tributeId = req.params.id;
+  const { firstName, middleName, lastName, obituary, image, video, dateOfBirth, dateOfDeath } = req.body;
+  const userId = req.user.id;
+
+  const queryText = `
+    UPDATE "tribute"
+    SET
+      "first_name" = $1,
+      "middle_name" = $2,
+      "last_name" = $3,
+      "obituary" = $4,
+      "image" = $5,
+      "video" = $6,
+      "date_of_birth" = $7,
+      "date_of_death" = $8
+    WHERE "id" = $9 AND "user_id" = $10
+  `;
+
+  const values = [firstName, middleName, lastName, obituary, image, video, dateOfBirth, dateOfDeath, tributeId, userId];
+
+  pool
+      .query(queryText, values)
       .then((result) => {
-          res.sendStatus(200);
+          if (result.rowCount > 0) {
+              res.sendStatus(200);
+          } else {
+              res.sendStatus(403);
+          }
       })
       .catch((error) => {
-          console.log(`Error making database query ${sqlText}`, error);
+          console.log('Error with PUT', error);
           res.sendStatus(500);
       });
 });
 
-
 module.exports = router;
+
+

@@ -1,73 +1,133 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import './EditPage.css';
+import { useHistory } from "react-router-dom";
 
-function EditPage(props) {
+function EditPage() {
   const tributeItems = useSelector((store) => store.TributeReducer);
   const dispatch = useDispatch();
-  const editTribute = useSelector((store) => store.editTribute);
+  const history = useHistory(); 
 
-  const handleDelete = (itemId) => {
-    dispatch({ type: 'DELETE_ITEM', payload: itemId });
-  };
+  useEffect(() => {
+    dispatch({ type: 'FETCH_TRIBUTE' });
+  }, [dispatch]);
 
-  const handleChange = (event) => {
+  const [firstName, setFirstName] = useState('');
+  const [middleName, setMiddleName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [obituary, setObituary] = useState('');
+  const [image, setImage] = useState('');
+  const [video, setVideo] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [dateOfDeath, setDateOfDeath] = useState('');
+
+  const handleEdit = (itemId) => {
     dispatch({
-      type: 'EDIT_ONCHANGE',
-      payload: { property: 'First_Name', value: event.target.value }
+      type: 'UPDATE_TRIBUTE',
+      payload: {
+        id: itemId,
+        firstName,
+        middleName,
+        lastName,
+        obituary,
+        image,
+        video,
+        dateOfBirth,
+        dateOfDeath,
+      }
     });
+
+ 
+    setFirstName('');
+    setMiddleName('');
+    setLastName('');
+    setObituary('');
+    setImage('');
+    setVideo('');
+    setDateOfBirth('');
+    setDateOfDeath('');
   };
 
-  const handleEditClick = () => {
-    dispatch({ type: 'SET_EDIT_TRIBUTE', payload: props.editTribute });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios.put(`/api/tribute/${editTribute.id}`, editTribute)
-      .then(response => {
-        dispatch({ type: 'EDIT_CLEAR' });
-      })
-      .catch(error => {
-        console.log('error on PUT: ', error);
-      });
+  const handleSubmit = () => {
+    history.push('/tributePage'); 
   };
 
   return (
-    <>
-      <h2>Edit Tribute Page</h2>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={handleChange}
-          placeholder='First Name'
-          value={editTribute.First_Name}
-        />
-         <button onClick={handleEditClick}>Edit!</button>
-      </form>
-
-      <div>
-        {tributeItems.map((item) => (
-          <div key={item.id}>
-            <p>First Name: {item.first_name}</p>
-            <p>Middle Name: {item.middle_name}</p>
-            <p>Last Name: {item.last_name}</p>
-            <p>Obituary: {item.obituary}</p>
-            {item.image && <img src={item.image} alt={`${item.first_name} ${item.last_name}`} style={{ width: '100%', maxWidth: '500px' }} />}
-            {item.video && (
-              <video controls style={{ width: '100%', maxWidth: '500px' }}>
-                <source src={item.video} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            )}
-            <p>Date of Birth: {item.date_of_birth}</p>
-            <p>Date of Death: {item.date_of_death}</p>
-            <button onClick={() => handleDelete(item.id)}>Delete</button>
+    <div className="container">
+      {tributeItems.map((item) => (
+        <div key={item.id} className="item-container">
+          <div className="item-details">
+            <p><strong>First Name:</strong> {item.first_name}</p>
+            <p><strong>Middle Name:</strong> {item.middle_name}</p>
+            <p><strong>Last Name:</strong> {item.last_name}</p>
+            <p><strong>Obituary:</strong> {item.obituary}</p>
+            <div className="item-media">
+              {item.image && <img src={item.image} alt={`${item.first_name} ${item.last_name}`} />}
+              {item.video && (
+                <video controls>
+                  <source src={item.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+            </div>
+            <p><strong>Date of Birth:</strong> {item.date_of_birth}</p>
+            <p><strong>Date of Death:</strong> {item.date_of_death}</p>
           </div>
-        ))}
-
-      </div>
-    </>
+          <div className="edit-form">
+            <input
+              type='text'
+              placeholder='Edit First Name'
+              value={firstName}
+              onChange={(event) => setFirstName(event.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Edit Middle Name'
+              value={middleName}
+              onChange={(event) => setMiddleName(event.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Edit Last Name'
+              value={lastName}
+              onChange={(event) => setLastName(event.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Edit Obituary'
+              value={obituary}
+              onChange={(event) => setObituary(event.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Edit Image URL'
+              value={image}
+              onChange={(event) => setImage(event.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Edit Video URL'
+              value={video}
+              onChange={(event) => setVideo(event.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Edit Date of Birth'
+              value={dateOfBirth}
+              onChange={(event) => setDateOfBirth(event.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Edit Date of Death'
+              value={dateOfDeath}
+              onChange={(event) => setDateOfDeath(event.target.value)}
+            />
+            <button onClick={() => handleEdit(item.id)}>Edit</button>
+            <button onClick={handleSubmit}>Submit</button>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
 

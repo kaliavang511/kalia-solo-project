@@ -25,6 +25,7 @@ import TributePage from '../TributePage/TributePage';
 import './App.css';
 import AddTribute from '../AddTribute/AddTribute';
 import EditPage from '../EditPage/EditPage';
+import QrCode from '../QrCode/QrCode';
 
 
 function App() {
@@ -65,6 +66,11 @@ function App() {
            <TributePage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/QrCode">
+           <QrCode />
+          </ProtectedRoute>
 
           <Route
             // shows AboutPage at all times (logged in or not)

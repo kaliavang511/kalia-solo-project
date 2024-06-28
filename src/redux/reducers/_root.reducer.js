@@ -3,7 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import TributeReducer from './tribute.reducer';
 import addTribute from './addTribute.reducer';
-import editTribute from './editTribute';
+
 
 
 
@@ -19,7 +19,6 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   TributeReducer,
   addTribute,
-  editTribute
 });
 
 export default rootReducer;

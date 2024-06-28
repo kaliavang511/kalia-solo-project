@@ -1,7 +1,6 @@
 import { put, takeLatest, call } from 'redux-saga/effects';
 import axios from 'axios';
 
-
 function* fetchTribute(){
     try{
         const tributeItem = yield axios.get(`/api/tribute`)
@@ -11,15 +10,14 @@ function* fetchTribute(){
     }
 }
 
-function * addTribute(action){
+function* addTribute(action){
     try{
         yield call(axios.post, '/api/tribute', action.payload);
         yield put({type: 'FETCH_TRIBUTE'})
-     } catch (error){
-            console.log('error with post request',error)
+    } catch (error){
+        console.log('error with post request',error)
     }
 }
-
 
 function* deleteTribute(action) {
     try {
@@ -30,13 +28,20 @@ function* deleteTribute(action) {
     }
 }
 
-
-
-
-function * tributeSaga(){
-    yield takeLatest('FETCH_TRIBUTE',fetchTribute)
-    yield takeLatest('ADD_TRIBUTE',addTribute)
-    yield takeLatest('DELETE_ITEM',deleteTribute)
-
+function* updateTribute(action) {
+    try {
+        yield call(axios.put, `/api/tribute/${action.payload.id}`, action.payload);
+        yield put({ type: 'FETCH_TRIBUTE' });
+    } catch (error) {
+        console.log('Error with update request', error);
+    }
 }
-export default tributeSaga
+
+function* tributeSaga(){
+    yield takeLatest('FETCH_TRIBUTE', fetchTribute)
+    yield takeLatest('ADD_TRIBUTE', addTribute)
+    yield takeLatest('DELETE_ITEM', deleteTribute)
+    yield takeLatest('UPDATE_TRIBUTE', updateTribute);
+}
+
+export default tributeSaga;
