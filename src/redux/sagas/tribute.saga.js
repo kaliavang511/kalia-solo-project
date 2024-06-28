@@ -31,9 +31,12 @@ function* deleteTribute(action) {
 }
 
 
+
+
 function * tributeSaga(){
     yield takeLatest('FETCH_TRIBUTE',fetchTribute)
     yield takeLatest('ADD_TRIBUTE',addTribute)
     yield takeLatest('DELETE_ITEM',deleteTribute)
+
 }
 export default tributeSaga

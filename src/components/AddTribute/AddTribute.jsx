@@ -43,7 +43,7 @@ function AddTribute(){
       setDateofBirth('');
       setDateOfDeath('');
 
-      history.push('/tributePage')
+      history.push('/editpage')
     };
 
 
@@ -102,6 +102,7 @@ function AddTribute(){
         />
 
         <button type='submit'>Submit</button>
+
 
       </form>
         </>

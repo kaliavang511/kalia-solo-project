@@ -14,8 +14,13 @@ function UserPage() {
     // </div>
 
     <div>
+      <p>
       My Tribute
-      <Link to="/addtribute">Add a Tribute</Link>
+      </p>
+      <p>
+        Click here to add tribute page
+      <Link to="/addtribute"> Add a Tribute</Link>
+      </p>
 
     </div>
   );

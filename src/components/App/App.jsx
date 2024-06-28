@@ -24,6 +24,7 @@ import TributePage from '../TributePage/TributePage';
 
 import './App.css';
 import AddTribute from '../AddTribute/AddTribute';
+import EditPage from '../EditPage/EditPage';
 
 
 function App() {
@@ -54,10 +55,15 @@ function App() {
 
           <ProtectedRoute
             exact
+            path="/editPage">
+           <EditPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
             path="/tributePage">
            <TributePage />
           </ProtectedRoute>
-
 
 
           <Route
