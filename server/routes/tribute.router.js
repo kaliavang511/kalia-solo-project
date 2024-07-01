@@ -3,41 +3,41 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-
 router.get('/', rejectUnauthenticated, (req, res) => {
-    const sqlText = `SELECT * FROM tribute`;
-    pool
-      .query(sqlText)
-      .then((result) => {
-        console.log(`GET from database`, result);
-        res.send(result.rows);
-      })
-      .catch((error) => {
-        console.log(`Error making database query ${sqlText}`, error);
-        res.sendStatus(500);
-      });
-  }); 
+  const userId = req.user.id;
+  const sqlText = `SELECT * FROM tribute WHERE user_id = $1`;
+  pool
+    .query(sqlText, [userId])
+    .then((result) => {
+      console.log(`GET from database`, result);
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+    });
+});
 
-
-  router.post('/', rejectUnauthenticated, (req, res) => {
-    const  { firstName, middleName, lastName, obituary, image_url, video_url, dateOfBirth, dateOfDeath } = req.body;
-    let queryText = `
-      INSERT INTO "tribute"
-      ("user_id", "first_name", "middle_name", "last_name", "obituary", "image", "video", "date_of_birth", "date_of_death")
-      VALUES
-      ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-    `;
-    const values = [req.user.id, firstName, middleName, lastName, obituary, image_url, video_url, dateOfBirth, dateOfDeath];
-    pool
-      .query(queryText, values)
-      .then(() => {
-        res.sendStatus(200);
-      })
-      .catch((error) => {
-        console.log('Error making POST', error);
-        res.sendStatus(500);
-      });
-  });
+router.post('/', rejectUnauthenticated, (req, res) => {
+  const { firstName, middleName, lastName, obituary, image_url, video_url, dateOfBirth, dateOfDeath } = req.body;
+  const userId = req.user.id;
+  let queryText = `
+    INSERT INTO "tribute"
+    ("user_id", "first_name", "middle_name", "last_name", "obituary", "image", "video", "date_of_birth", "date_of_death")
+    VALUES
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+  `;
+  const values = [userId, firstName, middleName, lastName, obituary, image_url, video_url, dateOfBirth, dateOfDeath];
+  pool
+    .query(queryText, values)
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('Error making POST', error);
+      res.sendStatus(500);
+    });
+});
 
 
   router.delete('/:id', rejectUnauthenticated, (req, res) => {
