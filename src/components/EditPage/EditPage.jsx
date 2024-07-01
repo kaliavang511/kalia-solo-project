@@ -37,7 +37,6 @@ function EditPage() {
       }
     });
 
- 
     setFirstName('');
     setMiddleName('');
     setLastName('');
@@ -60,18 +59,25 @@ function EditPage() {
             <p><strong>First Name:</strong> {item.first_name}</p>
             <p><strong>Middle Name:</strong> {item.middle_name}</p>
             <p><strong>Last Name:</strong> {item.last_name}</p>
-            <p><strong>Obituary:</strong> {item.obituary}</p>
-            <div className="item-media">
-              {item.image && <img src={item.image} alt={`${item.first_name} ${item.last_name}`} />}
-              {item.video && (
-                <video controls>
-                  <source src={item.video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              )}
-            </div>
             <p><strong>Date of Birth:</strong> {item.date_of_birth}</p>
             <p><strong>Date of Death:</strong> {item.date_of_death}</p>
+            <p><strong>Obituary:</strong> {item.obituary}</p>
+            <div className="item-media">
+              {item.image && <img src={item.image} alt={`${item.first_name} ${item.last_name}`} className="editImage" />}
+              {item.video && (
+                <div className="video-container">
+                  <iframe
+                    title="Vimeo Video"
+                    src={`https://player.vimeo.com/video/${item.video.split("/").pop()}`}
+                    width="560"
+                    height="315"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              )}
+            </div>
+          
           </div>
           <div className="edit-form">
             <input
@@ -106,7 +112,7 @@ function EditPage() {
             />
             <input
               type='text'
-              placeholder='Edit Video URL'
+              placeholder='Edit Video ID (Vimeo)'
               value={video}
               onChange={(event) => setVideo(event.target.value)}
             />
