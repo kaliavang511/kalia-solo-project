@@ -2,12 +2,20 @@ import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const tributeItems = useSelector((store) => store.TributeReducer);
 
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch({ type: 'FETCH_TRIBUTE' });
+  }, [dispatch]);
+  
   return (
     <div>
       <h1>My Tribute</h1>
