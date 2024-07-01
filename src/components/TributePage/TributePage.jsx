@@ -1,7 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import './TributePage.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Row, Col, Button, Form, Container } from 'react-bootstrap';
+import './TributePage.css';
 
 function TributePage() {
   const tributeItems = useSelector((store) => store.TributeReducer);
@@ -21,34 +23,56 @@ function TributePage() {
   };
 
   return (
-    <div className="container">
+    <Container fluid className="d-flex align-items-center justify-content-center text-center min-vh-10">
+    <Form>
       {tributeItems.map((item) => (
-        <div key={item.id} className="item-container">
-          <div className="item-details">
-            <p><strong>First Name:</strong> {item.first_name}</p>
-            <p><strong>Middle Name:</strong> {item.middle_name}</p>
-            <p><strong>Last Name:</strong> {item.last_name}</p>
-            <p><strong>Obituary:</strong> {item.obituary}</p>
-            <div className="item-media">
-              {item.image && <img src={item.image} alt={`${item.first_name} ${item.last_name}`} />}
+        <div key={item.id}>
+          <Row className="mb-2">
+            <h1 className="firstName">{item.first_name} {item.middle_name} {item.last_name}</h1>
+            <Col>
+              <p> {item.date_of_birth} - {item.date_of_death}</p>
+            </Col>
+            
+            <Row className="mb-2 text-center"> 
+              {item.image && (
+                <img 
+                  src={item.image} 
+                  alt={`${item.first_name} ${item.last_name}`} 
+                  className="item-media img mx-auto" 
+                />
+              )}
+            </Row>
+            <Row>
+              <Col>
+                <p> {item.obituary}</p>
+              </Col>
+            </Row>
+            
+          </Row>
+          <Row className="mt-2">
+            <Col>
               {item.video && (
-                <video controls>
+                <video controls className="item-media video mx-auto">
                   <source src={item.video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               )}
-            </div>
-            <p><strong>Date of Birth:</strong> {item.date_of_birth}</p>
-            <p><strong>Date of Death:</strong> {item.date_of_death}</p>
-          </div>
-          <div className="buttons-container">
-            <button className="back" onClick={handleEdit}>Back</button>
-            <button className="delete" onClick={() => handleDelete(item.id)}>Delete</button>
-            <button className="confirm" onClick={handleConfirm}>Confirm</button>
-          </div>
+            </Col>
+          </Row>
+          <Row className="mt-2">
+            <Col>
+              <Button variant="primary" onClick={handleEdit}>Back</Button>
+              <Button variant="danger" onClick={() => handleDelete(item.id)}>Delete</Button>
+              <Button variant="success" onClick={handleConfirm}>Confirm</Button>
+            </Col>
+          </Row>
         </div>
       ))}
-    </div>
+    </Form>
+  </Container>
+  
+  
+ 
   );
 }
 
