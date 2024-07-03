@@ -5,51 +5,36 @@
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
+
   .label {
     font-weight: bold;
     margin-bottom: 8px;
-    display: block;
   }
   
   .input {
-    width: calc(100% - 24px); 
+    width: calc(100%); 
     padding: 12px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    outline: none;
-    transition: border-color 0.2s ease;
+
   }
   
-  .input:focus {
-    border-color: #6b94ff;
-  }
   
   .button {
-    background-color: #6b94ff;
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff96;
     color: white;
     border: none;
-    padding: 12px 20px;
-    font-size: 16px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
   }
   
-  .button:hover {
-    background-color: #5680e9;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 4px;
-  }
+ 
+
   

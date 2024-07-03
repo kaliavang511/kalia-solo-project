@@ -1,46 +1,38 @@
-.container {
+   .container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  } 
+  }
   
-   .item-container {
+  .item-container {
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #eee;
     border-radius: 4px;
     background-color: white;
-  } 
+  }
   
   .item-details {
     margin-bottom: 10px;
-  } 
+  }
   
   .item-details p {
     margin: 5px 0;
-  } 
- 
+  }
+  
   .item-media {
     margin-bottom: 10px;
   }
   
-  /* .item-media img,
-  .item-media video {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 4px;
-  }
-   */
   .edit-form {
     margin-top: 10px;
   }
   
-  .edit-form input[type='text'],
-  .edit-form textarea {
+  .edit-form input,
+  .edit-form {
     width: 100%;
     padding: 8px;
     margin-bottom: 8px;
@@ -50,32 +42,34 @@
     box-sizing: border-box;
   }
   
-  .edit-form button {
-    background-color: #6b94ff;
+
+  .editImage, .video-container iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 500px;    
+    border-radius: 4px;
+  }
+  
+  .editSubmit{
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1c7009ab;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
   }
   
-  /* .edit-form button:hover {
-    background-color: #5680e9;
-  } */
- 
-  
-  p{
-    text-align: center;
+  .editBtn{
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bffce;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
- 
-  .editImage{
-  width: 100%;
-  max-width: 300px; 
-  height: auto; 
-  border-radius: 4px;
-  margin-left: 250px;
-
-  }
-  

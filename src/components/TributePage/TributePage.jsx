@@ -23,33 +23,34 @@ function TributePage() {
   };
 
   return (
-    <Container fluid className="d-flex align-items-center justify-content-center text-center min-vh-10">
+    <Container fluid className="d-flex align-items-center justify-content-center text-center">
       <Form>
-        {tributeItems.map((item) => (
-          <div key={item.id}>
-            <Row className="mb-2">
-              <h1 className="firstName">{item.first_name} {item.middle_name} {item.last_name}</h1>
-              <Col>
-                <p> {item.date_of_birth} - {item.date_of_death}</p>
-              </Col>
-              
-              <Row>
+        <div className="container"> 
+          {tributeItems.map((item) => (
+            <div key={item.id}>
+              <Row className="mb-2">
+                <h1 className="firstName">{item.first_name} {item.middle_name} {item.last_name}</h1>
                 <Col>
-                  <p> {item.obituary}</p>
+                  <p> {item.date_of_birth} - {item.date_of_death}</p>
                 </Col>
+                
+                <Row>
+                  <Col>
+                    <p> {item.obituary}</p>
+                  </Col>
+                </Row>
               </Row>
-            </Row>
-            <Row className="mt-2">
-                {item.image && (
-                  <img 
-                    src={item.image} 
-                    alt={`${item.first_name} ${item.last_name}`} 
-                    className="tributeImage" 
-                  />
-                )}
-          
-              <Col>
-                <div className="item-media">
+              <Row className="mt-2">
+                <Col md={6}>
+                  {item.image && (
+                    <img 
+                      src={item.image} 
+                      alt={`${item.first_name} ${item.last_name}`} 
+                      className="tributeImage" 
+                    />
+                  )}
+                </Col>
+                <Col md={6}>
                   {item.video && (
                     <div className="video-container">
                       <iframe
@@ -61,19 +62,19 @@ function TributePage() {
                       ></iframe>
                     </div>
                   )}
-                </div>
-              </Col>
-            </Row>
+                </Col>
+              </Row>
 
-            <Row className="mt-2" >
-              <Col>
-                <Button variant="primary" onClick={handleEdit}>Back</Button>
-                <Button variant="danger" onClick={() => handleDelete(item.id)}>Delete</Button>
-                <Button variant="success" onClick={handleConfirm}>Confirm</Button>
-              </Col>
-            </Row>
-          </div>
-        ))}
+              <Row className="mt-2">
+                <Col className="d-flex justify-content-between">
+                  <button className="backBtn" onClick={handleEdit}>Back</button>
+                  <button className="deleteBtn" onClick={() => handleDelete(item.id)}>Delete</button>
+                  <button className="confirmBtn"  onClick={handleConfirm}>Confirm</button>
+                </Col>
+              </Row>
+            </div>
+          ))}
+        </div>
       </Form>
     </Container>
   );

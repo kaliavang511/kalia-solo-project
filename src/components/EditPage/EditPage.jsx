@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './EditPage.css';
 import { useHistory } from "react-router-dom";
+import { Row, Col, Button, Form, Container } from 'react-bootstrap';
 
 function EditPage() {
   const tributeItems = useSelector((store) => store.TributeReducer);
@@ -63,21 +64,28 @@ function EditPage() {
             <p><strong>Date of Death:</strong> {item.date_of_death}</p>
             <p><strong>Obituary:</strong> {item.obituary}</p>
             <div className="item-media">
-              {item.image && <img src={item.image} alt={`${item.first_name} ${item.last_name}`} className="editImage" />}
-              {item.video && (
-                <div className="video-container">
-                  <iframe
-                    title="Vimeo Video"
-                    src={`https://player.vimeo.com/video/${item.video.split("/").pop()}`}
-                    width="560"
-                    height="315"
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              )}
+              <Row>
+                <Col md={6}>
+                  {item.image && <img src={item.image} alt={`${item.first_name} ${item.last_name}`} className="editImage" />}
+                </Col>
+                <Col md={6}>
+                  {item.video && (
+                    <div className="video-container">
+                      <iframe
+                        title="Vimeo Video"
+                        src={`https://player.vimeo.com/video/${item.video.split("/").pop()}`}
+                        width="100%"
+                        height="315"
+                        weidth ="300"
+                         className="EditVideo"
+                        allow="autoplay; fullscreen"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  )}
+                </Col>
+              </Row>
             </div>
-          
           </div>
           <div className="edit-form">
             <input
@@ -98,6 +106,18 @@ function EditPage() {
               value={lastName}
               onChange={(event) => setLastName(event.target.value)}
             />
+             <input
+              type='text'
+              placeholder='Edit Date of Birth'
+              value={dateOfBirth}
+              onChange={(event) => setDateOfBirth(event.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Edit Date of Death'
+              value={dateOfDeath}
+              onChange={(event) => setDateOfDeath(event.target.value)}
+            />
             <input
               type='text'
               placeholder='Edit Obituary'
@@ -116,21 +136,15 @@ function EditPage() {
               value={video}
               onChange={(event) => setVideo(event.target.value)}
             />
-            <input
-              type='text'
-              placeholder='Edit Date of Birth'
-              value={dateOfBirth}
-              onChange={(event) => setDateOfBirth(event.target.value)}
-            />
-            <input
-              type='text'
-              placeholder='Edit Date of Death'
-              value={dateOfDeath}
-              onChange={(event) => setDateOfDeath(event.target.value)}
-            />
-            <button onClick={() => handleEdit(item.id)}>Edit</button>
-            <button onClick={handleSubmit}>Submit</button>
-          </div>
+            </div> 
+
+            <Row>
+           <Col className="d-flex justify-content-between">
+          <button className = "editBtn"  onClick={() => handleEdit(item.id)}>Edit</button>
+          <button  className ='editSubmit'onClick={handleSubmit}>Submit</button>
+           </Col>
+        </Row>
+
         </div>
       ))}
     </div>

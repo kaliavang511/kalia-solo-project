@@ -1,0 +1,23 @@
+.homeImage{
+    width: 100%;
+    max-width: 300px; 
+    height: auto; 
+    border-radius: 4px;
+    margin-left: 250px;
+}
+
+.tributePageBtn{
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bffa9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.userText{
+    text-align: center;
+}

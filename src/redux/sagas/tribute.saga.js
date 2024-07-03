@@ -19,6 +19,8 @@ function* addTribute(action){
     }
 }
 
+
+
 function* deleteTribute(action) {
     try {
         yield call(axios.delete, `/api/tribute/${action.payload}`);
