@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './EditPage.css';
 import { useHistory } from "react-router-dom";
-import { Row, Col, Button, Form, Container } from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 
 function EditPage() {
   const tributeItems = useSelector((store) => store.TributeReducer);
@@ -22,21 +22,25 @@ function EditPage() {
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [dateOfDeath, setDateOfDeath] = useState('');
 
+
   const handleEdit = (itemId) => {
     dispatch({
       type: 'UPDATE_TRIBUTE',
       payload: {
         id: itemId,
-        firstName,
-        middleName,
-        lastName,
-        obituary,
-        image,
-        video,
-        dateOfBirth,
-        dateOfDeath,
+        firstName: firstName || tributeItems.find(item => item.id === itemId).first_name,
+        //checking if the id of our original id matches our current id. If not then change it. 
+        //If it matches then leave it as it 
+        middleName: middleName || tributeItems.find(item => item.id === itemId).middle_name,
+        lastName: lastName || tributeItems.find(item => item.id === itemId).last_name,
+        obituary: obituary || tributeItems.find(item => item.id === itemId).obituary,
+        image: image || tributeItems.find(item => item.id === itemId).image,
+        video: video || tributeItems.find(item => item.id === itemId).video,
+        dateOfBirth: dateOfBirth || tributeItems.find(item => item.id === itemId).date_of_birth,
+        dateOfDeath: dateOfDeath || tributeItems.find(item => item.id === itemId).date_of_death,
       }
     });
+  
 
     setFirstName('');
     setMiddleName('');
@@ -47,7 +51,7 @@ function EditPage() {
     setDateOfBirth('');
     setDateOfDeath('');
   };
-
+  
   const handleSubmit = () => {
     history.push('/tributePage'); 
   };
@@ -147,8 +151,12 @@ function EditPage() {
 
         </div>
       ))}
+
+
+      
     </div>
   );
+  
 }
 
 export default EditPage;

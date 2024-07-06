@@ -99,5 +99,3 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 module.exports = router;
-
-

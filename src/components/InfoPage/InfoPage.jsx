@@ -8,9 +8,16 @@ import React from 'react';
 function InfoPage() {
   return (
     <div className="container">
-      <p>Info Page</p>
+      <h2>Info Page</h2>
+      <img src='https://t4.ftcdn.net/jpg/06/13/84/71/360_F_613847152_eIaQ8FxLpxU6jFQ7cmN7mmxVfGSJTgVX.jpg'/>
       <p>
-        Contact Info:  KaliaVang511@Gmail.com
+        Contact Info: Name: Kalia Vang
+      </p>
+      <p>
+        Phone Number: (888)888-8888
+      </p>
+      <p > 
+        Email Address: LegacyQR@gmail.com
       </p>
     </div>
   );
