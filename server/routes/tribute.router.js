@@ -18,6 +18,27 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     });
 });
 
+// router.post('/', rejectUnauthenticated, (req, res) => {
+//   const { firstName, middleName, lastName, obituary, image_url, video_url, dateOfBirth, dateOfDeath } = req.body;
+//   const userId = req.user.id;
+//   let queryText = `
+//     INSERT INTO "tribute"
+//     ("user_id", "first_name", "middle_name", "last_name", "obituary", "image", "video", "date_of_birth", "date_of_death")
+//     VALUES
+//     ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+//   `;
+//   const values = [userId, firstName, middleName, lastName, obituary, image_url, video_url, dateOfBirth, dateOfDeath];
+//   pool
+//     .query(queryText, values)
+//     .then(() => {
+//       res.sendStatus(200);
+//     })
+//     .catch((error) => {
+//       console.log('Error making POST', error);
+//       res.sendStatus(500);
+//     });
+// });
+
 router.post('/', rejectUnauthenticated, (req, res) => {
   const { firstName, middleName, lastName, obituary, image_url, video_url, dateOfBirth, dateOfDeath } = req.body;
   const userId = req.user.id;
@@ -26,12 +47,13 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     ("user_id", "first_name", "middle_name", "last_name", "obituary", "image", "video", "date_of_birth", "date_of_death")
     VALUES
     ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    RETURNING id
   `;
   const values = [userId, firstName, middleName, lastName, obituary, image_url, video_url, dateOfBirth, dateOfDeath];
   pool
     .query(queryText, values)
-    .then(() => {
-      res.sendStatus(200);
+    .then((result) => {
+      res.status(201).send({ id: result.rows[0].id });
     })
     .catch((error) => {
       console.log('Error making POST', error);

@@ -10,7 +10,7 @@ import './UserPage.css';
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
-  const tributeItems = useSelector((store) => store.TributeReducer);
+  const tributeItems = useSelector((store) => store.tribute);
   const history =useHistory()
   const dispatch = useDispatch()
 

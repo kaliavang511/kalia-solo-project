@@ -26,6 +26,8 @@ import './App.css';
 import AddTribute from '../AddTribute/AddTribute';
 import EditPage from '../EditPage/EditPage';
 import QrCode from '../QrCode/QrCode';
+import EditTribute from '../EditTribute/EditTribute';
+import TributePageConfirm from '../TributePageConfirm/TributePageConfirm';
 
 
 function App() {
@@ -53,18 +55,23 @@ function App() {
             path="/addtribute">
            <AddTribute />
           </ProtectedRoute>
-
           <ProtectedRoute
             exact
-            path="/editPage/">
+          path="/editpage"
+          >
            <EditPage />
           </ProtectedRoute>
+          
+          <Route 
+          path="/edittribute/:id" component={EditTribute} />
 
           <ProtectedRoute
             exact
             path="/tributePage">
            <TributePage />
           </ProtectedRoute>
+
+         <Route path="/tributePageCon" component={TributePageConfirm} />
 
           <ProtectedRoute
             exact
