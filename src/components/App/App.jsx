@@ -21,7 +21,6 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import TributePage from '../TributePage/TributePage';
 
-
 import './App.css';
 import AddTribute from '../AddTribute/AddTribute';
 import EditPage from '../EditPage/EditPage';
@@ -70,6 +69,7 @@ function App() {
             path="/tributePage">
            <TributePage />
           </ProtectedRoute>
+
 
          <Route path="/tributePageCon" component={TributePageConfirm} />
 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './EditPage.css';
 import { Row,Col,Container } from "react-bootstrap";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function EditPage() {
   const tributeItems = useSelector((store) => store.tribute);
@@ -11,6 +12,12 @@ function EditPage() {
   useEffect(() => {
     dispatch({ type: 'FETCH_TRIBUTE' });
   }, [dispatch]);
+
+  const history =useHistory()
+
+  const handleSubmitToTributePage = () => {
+    history.push('/tributePage'); 
+  };
 
   return (
     <>
@@ -62,7 +69,7 @@ function EditPage() {
     <Link to={`/edittribute/${item.id}`}> Click here to Edit</Link>
     </div>
     <div>
-    <button className="editBtn"> Submit </button>
+    <button className="editBtn" onClick={handleSubmitToTributePage}> Submit </button>
     </div>
   
     </div>

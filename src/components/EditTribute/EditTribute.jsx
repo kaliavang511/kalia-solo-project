@@ -25,7 +25,7 @@ function EditTribute() {
     dispatch({
       type: 'UPDATE_TRIBUTE',
       payload: {
-        id: tribute.id,
+        id: tribute.id, 
         firstName,
         middleName,
         lastName,
