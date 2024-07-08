@@ -4,7 +4,7 @@ import './QrCode.css';
 
 
 function QrCode() {
-  const tributePageUrl = `https://qr-code-for-gravestones-90b039d8fe07.herokuapp.com/#/tributePageCon`
+  const tributePageUrl = `https://qr-code-for-gravestones-90b039d8fe07.herokuapp.com/#/tributePage`
   return (
     <>
       <h1 className='qrTitle'>QR Code ready</h1>
