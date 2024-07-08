@@ -102,15 +102,7 @@ function TributePage() {
       <div className="container"> 
         <Row className="mb-2">
           <h1 className="firstName">{item.first_name} {item.middle_name} {item.last_name}</h1>
-          <Col>
-            <p> {item.date_of_birth} - {item.date_of_death}</p>
-          </Col>
           
-          <Row>
-            <Col>
-              <p> {item.obituary}</p>
-            </Col>
-          </Row>
         </Row>
         <Row className="mt-2">
           <Col md={6}>
@@ -120,8 +112,19 @@ function TributePage() {
                 alt={`${item.first_name} ${item.last_name}`} 
                 className="tributeImage" 
               />
+              
             )}
+
           </Col>
+          <Col>
+            <p> {item.date_of_birth} - {item.date_of_death}</p>
+          </Col>
+          
+          <Row>
+            <Col>
+              <p> {item.obituary}</p>
+            </Col>
+          </Row>
           <Col md={6}>
             {item.video && (
               <div className="video-container">

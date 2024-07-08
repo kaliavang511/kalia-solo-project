@@ -29,9 +29,7 @@ function UserPage() {
         {tributeItems.map((item) => (
           <div key={item.id} className="item-container">
             <div className="item-details">
-              <p className='userText'><strong>First Name:</strong> {item.first_name}</p>
-              <p className='userText'><strong>Middle Name:</strong> {item.middle_name}</p>
-              <p className='userText'><strong>Last Name:</strong> {item.last_name}</p>
+              <p className='userText'>{item.first_name} {item.middle_name} {item.last_name}</p>
               <div>
                 {item.image && <img src={item.image} alt={`${item.first_name} ${item.last_name}`} className='homeImage'/>}
               </div>
@@ -46,8 +44,8 @@ function UserPage() {
       </div>
 
       <p className='userText'> 
-        Click here to add new tribute page
-        <Link to="/addtribute"> Add a Tribute</Link>
+        Click here to add 
+        <Link to="/addtribute"> New Tribute Page</Link>
       </p>
     </div>
   );
