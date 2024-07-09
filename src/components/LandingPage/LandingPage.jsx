@@ -19,10 +19,14 @@ function LandingPage() {
 
       <div className="grid">
         <div className="grid-col grid-col_8">
-      <h1>
+      <h1 className='homeTitle'>
        Legacy 
         
       </h1>
+      <p>
+      This app offers a new way to honor loved ones by using QR codes on 
+      gravestones. Scanning these codes takes users to personalized tribute pages with special memories, photos, and stories.
+      </p>
        <p>
         <img src='https://www.romemonuments.com/sites/default/files/qr-codes.jpg'/>
        </p>

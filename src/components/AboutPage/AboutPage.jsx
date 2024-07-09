@@ -29,7 +29,7 @@ function AboutPage() {
    <li> Redux-Saga </li> 
    <li> Bootstrap </li> 
    <li> CSS</li> 
-   <li> Node </li> 
+   <li> Node.js</li> 
    <li> Express </li> 
     <li> SQL </li> 
   </ul>
