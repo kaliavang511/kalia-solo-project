@@ -2,9 +2,7 @@
                                 
 
 Overview
- This app offers a modern way to memorialize loved ones by using QR codes on gravestones. These codes link to personalized
-tribute pages, filled with cherished memories, photos, and stories. Our goal is to help familieshonor and celebrate their 
-loved ones' lives in a heartfelt and meaningful way, keeping their memories alive for future generations.
+ This app offers a modern way to memorialize loved ones by using QR codes on gravestones. These codes link to personalized tribute pages, filled with cherished memories, photos, and stories. Our goal is to help familieshonor and celebrate their loved ones' lives in a heartfelt and meaningful way, keeping their memories alive for future generations.
 
 Features
 -Create Tribute Pages: Easily create a tribute page with photos, videos, and stories.
