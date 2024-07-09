@@ -1,4 +1,5 @@
-Legacy 
+                                         Legacy 
+                                
 
 Overview
  This app offers a modern way to memorialize loved ones by using QR codes on gravestones. These codes link to personalized
