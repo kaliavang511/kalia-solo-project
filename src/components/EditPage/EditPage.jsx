@@ -7,25 +7,30 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function EditPage() {
   const tributeItems = useSelector((store) => store.tribute);
+  //use store in order to get access of data in there
   const dispatch = useDispatch();
+  //declaring useDispatch so we can use it
 
   useEffect(() => {
     dispatch({ type: 'FETCH_TRIBUTE' });
+    //when the page loads, sends action 'FETCH_TRIBUTE'
   }, [dispatch]);
+  // only run when dispatch changes. This is to prevent effect from running again 
 
   const history =useHistory()
+  //declaring useHistory so we can use it
 
   const handleSubmitToTributePage = () => {
     history.push('/tributePage'); 
   };
-
+//when submit button gets click, it takes us to 'tributePage'
   return (
     <>
 
 <div>
       {tributeItems.map((item) => (
         <div key={item.id} className="item-container">
-<Container fluid className="d-flex align-items-center justify-content-center text-center">
+<Container fluid className=" align-items-center justify-content-center text-center">
       <div className="container"> 
         <Row className="mb-2">
           <h1 className="firstName">{item.first_name} {item.middle_name} {item.last_name}</h1>
@@ -55,7 +60,6 @@ function EditPage() {
                   title="Vimeo Video"
                   src={`https://player.vimeo.com/video/${item.video.split("/").pop()}`}
                   className="video"
-                  allow="autoplay; fullscreen"
                   allowFullScreen
                 ></iframe>
               </div>

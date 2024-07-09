@@ -19,7 +19,9 @@ justify-content: center;
 
 .userText{
     text-align: center;
+   
 }
-h1{
+.userH1{
     text-align: center;
+    color:  #6365689d;
 }

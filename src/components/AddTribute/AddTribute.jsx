@@ -6,6 +6,7 @@ import './AddTribute.css';
 function AddTribute() {
   const dispatch = useDispatch();
   const history = useHistory();
+//declaring it in order to use it
 
   const [firstName, setFirstName] = useState('');
   const [middleName, setMiddleName] = useState('');
@@ -15,9 +16,12 @@ function AddTribute() {
   const [video, setVideo] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [dateOfDeath, setDateOfDeath] = useState('');
+  //setting up state. state is currently a empty string.
 
+  
   const handleSubmit = (event) => {
     event.preventDefault();
+    //prevent default so page loads correctly 
 
     dispatch({
       type: 'ADD_TRIBUTE',
@@ -32,7 +36,7 @@ function AddTribute() {
         dateOfDeath
       }
     });
-
+//sending an action type 'add_tribute' & payload to store
     setFirstName('');
     setMiddleName('');
     setLastName('');
@@ -41,8 +45,9 @@ function AddTribute() {
     setVideo('');
     setDateOfBirth('');
     setDateOfDeath('');
-
+//making sure it goes back to an empty string after being sent
     history.push('/editpage');
+    // Navigate to the '/editpage' route
   };
 
   const handleAutoFill = () => {
@@ -55,6 +60,7 @@ function AddTribute() {
     setDateOfBirth('Nov. 20, 2011');
     setDateOfDeath('July 03, 2024');
   };
+  //making an arrow function to autofill the values on the inputs
 
   return (
     <div className="container">

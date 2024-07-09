@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
@@ -7,7 +7,7 @@ function EditTribute() {
   //to extract the id parameter from the URL
   const tributeItems = useSelector((store) => store.tribute);
   const tribute = tributeItems.find((item) => item.id === parseInt(id));
-  //find matching IDs. converted id into INT
+  //find matching IDs and converting id into INT
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -19,9 +19,12 @@ function EditTribute() {
   const [video, setVideo] = useState(tribute.video);
   const [dateOfBirth, setDateOfBirth] = useState(tribute.date_of_birth);
   const [dateOfDeath, setDateOfDeath] = useState(tribute.date_of_death);
+  //setting up state to equal whatever the input's value is
   const [selectedItem, setSelectedItem] = useState(null);
 
+
   const handleEdit = (item) => {
+  //need to pass item to keep track of which item is being selected to get edit 
     dispatch({
       type: 'UPDATE_TRIBUTE',
       payload: {
@@ -35,11 +38,18 @@ function EditTribute() {
         dateOfBirth,
         dateOfDeath,
       },
+      //sending action type 'UPDATE_TRIBUTE' and data to the store
     });
     setSelectedItem(item);
+    //updating state with current item
+   
+    
+    
     history.push({
       pathname: '/tributePage',
+      //taking us to tributePage
       state: { item }
+      //passing item to new route
     })
   };
 

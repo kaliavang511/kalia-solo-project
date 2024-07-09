@@ -54,15 +54,19 @@ function App() {
             path="/addtribute">
            <AddTribute />
           </ProtectedRoute>
+
+
           <ProtectedRoute
             exact
-          path="/editpage"
-          >
+          path="/editpage" >
            <EditPage />
           </ProtectedRoute>
           
-          <Route 
-          path="/edittribute/:id" component={EditTribute} />
+          <ProtectedRoute
+          exact
+          path="/edittribute/:id">
+          <EditTribute/>
+         </ProtectedRoute> 
 
           <ProtectedRoute
             exact
@@ -71,7 +75,11 @@ function App() {
           </ProtectedRoute>
 
 
-         <Route path="/tributePageCon" component={TributePageConfirm} />
+         <ProtectedRoute
+         exact
+         path="/tributePageCon">
+          <TributePageConfirm/>
+          </ProtectedRoute> 
 
           <ProtectedRoute
             exact

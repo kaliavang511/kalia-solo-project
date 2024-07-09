@@ -23,7 +23,7 @@ function UserPage() {
   };
   return (
     <div>
-      <h1>My Tribute Pages</h1>
+      <h1 className='userH1'>My Tribute Pages</h1>
 
       <div className="container">
         {tributeItems.map((item) => (

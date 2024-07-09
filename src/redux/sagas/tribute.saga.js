@@ -54,6 +54,7 @@ function* tributeSaga(){
     yield takeLatest('ADD_TRIBUTE', addTribute)
     yield takeLatest('DELETE_ITEM', deleteTribute)
     yield takeLatest('UPDATE_TRIBUTE', updateTribute);
+    //listen to action type then run the the function
 }
 
 export default tributeSaga;

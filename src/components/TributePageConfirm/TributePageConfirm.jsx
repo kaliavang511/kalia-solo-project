@@ -7,7 +7,10 @@ import './TributePageConfirm.css';
 
 function TributePageConfirm() {
   const location = useLocation();
-  const { item } = location.state || {}; 
+  //allow TributePageConfirm to access (item) state from being passed from pervious route
+  const { item } = location.state  
+//Take the item property from location.state. 
+
   const history = useHistory()
 
   const handleQrCode = () => {
@@ -16,7 +19,7 @@ function TributePageConfirm() {
 
   return (
     <>
-    <Container fluid className="d-flex align-items-center justify-content-center text-center">
+    <Container fluid className=" align-items-center justify-content-center text-center">
       <div className="container"> 
         <Row className="mb-2">
           <h1 className="firstName">{item.first_name} {item.middle_name} {item.last_name}</h1>
@@ -46,7 +49,6 @@ function TributePageConfirm() {
                   title="Vimeo Video"
                   src={`https://player.vimeo.com/video/${item.video.split("/").pop()}`}
                   className="video"
-                  allow="autoplay; fullscreen"
                   allowFullScreen
                 ></iframe>
               </div>
