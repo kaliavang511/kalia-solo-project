@@ -45,14 +45,10 @@ function EditPage() {
               />
             )}
           </Col>
-
-        
             <p> {item.date_of_birth} - {item.date_of_death}</p>
-          
             
               <p> {item.obituary}</p>
-            
-
+          
           <Col md={6}>
             {item.video && (
               <div className="video-container">

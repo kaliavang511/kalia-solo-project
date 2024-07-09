@@ -1,4 +1,3 @@
-// No changes should be required in this file
 
 const expressSession = require('express-session');
 const PgSession = require('connect-pg-simple')(expressSession);
