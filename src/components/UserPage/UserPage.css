@@ -1,9 +1,8 @@
 .homeImage{
-    width: 100%;
-    max-width: 300px; 
-    height: auto; 
-    border-radius: 4px;
-    margin-left: 250px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
 
 .tributePageBtn{
@@ -20,7 +19,9 @@
 
 .userText{
     text-align: center;
+   
 }
-h1{
+.userH1{
     text-align: center;
+    color:  #6365689d;
 }

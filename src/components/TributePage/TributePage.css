@@ -10,14 +10,22 @@
   font-family: cursive;
 }
 
-.tributeImage, .video-container iframe {
+ .video-container iframe {
   width: 100%;
-  max-width: 560px;
+  max-width: 280px;
   height: 500px;    
   border-radius: 4px;
   object-fit: cover; 
+  padding: 10px;
 }
 
+.tributeImage{
+  height: 150px;
+  width: 150px;
+  border-radius: 45%;
+  margin: 20px auto;
+
+}
 
 .backBtn{
   display: block;

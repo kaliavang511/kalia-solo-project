@@ -21,11 +21,12 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import TributePage from '../TributePage/TributePage';
 
-
 import './App.css';
 import AddTribute from '../AddTribute/AddTribute';
 import EditPage from '../EditPage/EditPage';
 import QrCode from '../QrCode/QrCode';
+import EditTribute from '../EditTribute/EditTribute';
+import TributePageConfirm from '../TributePageConfirm/TributePageConfirm';
 
 
 function App() {
@@ -54,17 +55,31 @@ function App() {
            <AddTribute />
           </ProtectedRoute>
 
+
           <ProtectedRoute
             exact
-            path="/editPage/">
+          path="/editpage" >
            <EditPage />
           </ProtectedRoute>
+          
+          <ProtectedRoute
+          exact
+          path="/edittribute/:id">
+          <EditTribute/>
+         </ProtectedRoute> 
 
           <ProtectedRoute
             exact
             path="/tributePage">
            <TributePage />
           </ProtectedRoute>
+
+
+         <ProtectedRoute
+         exact
+         path="/tributePageCon">
+          <TributePageConfirm/>
+          </ProtectedRoute> 
 
           <ProtectedRoute
             exact

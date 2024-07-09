@@ -11,13 +11,14 @@ function InfoPage() {
       <h2>Info Page</h2>
       <img src='https://t4.ftcdn.net/jpg/06/13/84/71/360_F_613847152_eIaQ8FxLpxU6jFQ7cmN7mmxVfGSJTgVX.jpg'/>
       <p>
-        Contact Info: Name: Kalia Vang
+       Name: Kalia Vang
       </p>
       <p>
-        Phone Number: (888)888-8888
-      </p>
+     LinkedIn: <a href="https://www.linkedin.com/in/kalia-vang-037b23162/">https://www.linkedin.com/in/kalia-vang-037b23162/</a>
+    </p>
+
       <p > 
-        Email Address: LegacyQR@gmail.com
+        Email Address: <a href= 'kaliavang511@gmail.com'> kaliavang511@gmail.com</a>
       </p>
     </div>
   );

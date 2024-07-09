@@ -6,6 +6,7 @@ import './AddTribute.css';
 function AddTribute() {
   const dispatch = useDispatch();
   const history = useHistory();
+//declaring it in order to use it
 
   const [firstName, setFirstName] = useState('');
   const [middleName, setMiddleName] = useState('');
@@ -15,9 +16,12 @@ function AddTribute() {
   const [video, setVideo] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [dateOfDeath, setDateOfDeath] = useState('');
+  //setting up state. state is currently a empty string.
 
+  
   const handleSubmit = (event) => {
     event.preventDefault();
+    //prevent default so page loads correctly 
 
     dispatch({
       type: 'ADD_TRIBUTE',
@@ -32,7 +36,7 @@ function AddTribute() {
         dateOfDeath
       }
     });
-
+//sending an action type 'add_tribute' & payload to store
     setFirstName('');
     setMiddleName('');
     setLastName('');
@@ -41,9 +45,22 @@ function AddTribute() {
     setVideo('');
     setDateOfBirth('');
     setDateOfDeath('');
-
+//making sure it goes back to an empty string after being sent
     history.push('/editpage');
+    // Navigate to the '/editpage' route
   };
+
+  const handleAutoFill = () => {
+    setFirstName('Ema');
+    setMiddleName('');
+    setLastName('Her');
+    setObituary('Emma, our cherished companion, brought joy and unconditional love into our lives for 13 wonderful years. With her gentle spirit and playful energy, she filled our home with laughter and warmth. Emma was more than just a pet; she was a loyal friend and a source of endless comfort. Her affectionate nature and wagging tail greeted us every day, reminding us of the simple pleasures in life. Though her time with us has ended, the memories of her boundless love and the happiness she brought will remain in our hearts forever. Rest in peace, sweet Emma. You will be deeply missed and forever loved.');
+    setImage('https://scontent.ffcm1-1.fna.fbcdn.net/v/t39.30808-6/449356488_8007703559291052_749910300539338298_n.jpg?stp=cp6_dst-jpg&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=h45j6aUv3MoQ7kNvgEHVLpa&_nc_ht=scontent.ffcm1-1.fna&oh=00_AYCbGK2t6mY1-ugUILyRg-qPE4rAQ_Pn5MQV_MAZM8Xxvw&oe=6691BBCB');
+    setVideo('https://vimeo.com/980644668?share=copy');
+    setDateOfBirth('Nov. 20, 2011');
+    setDateOfDeath('July 03, 2024');
+  };
+  //making an arrow function to autofill the values on the inputs
 
   return (
     <div className="container">
@@ -130,7 +147,8 @@ function AddTribute() {
           />
         </div>
 
-        <button type='submit' className='button'>Submit</button>
+        <button className='button'>Submit</button>
+        <button className='autoFill' onClick={handleAutoFill}>Auto Fill</button>
       </form>
     </div>
   );

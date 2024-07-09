@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-import TributeReducer from './tribute.reducer';
+import tributeReducer from './tribute.reducer';
 
 
 
@@ -17,7 +17,8 @@ import TributeReducer from './tribute.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  TributeReducer,
+  tribute: tributeReducer,
+  //calling tributeReducer tribute so it doesnt get confusing 
 });
 
 export default rootReducer;

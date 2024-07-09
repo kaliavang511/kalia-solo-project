@@ -10,7 +10,7 @@ import './UserPage.css';
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
-  const tributeItems = useSelector((store) => store.TributeReducer);
+  const tributeItems = useSelector((store) => store.tribute);
   const history =useHistory()
   const dispatch = useDispatch()
 
@@ -23,15 +23,13 @@ function UserPage() {
   };
   return (
     <div>
-      <h1>My Tribute Pages</h1>
+      <h1 className='userH1'>My Tribute Pages</h1>
 
       <div className="container">
         {tributeItems.map((item) => (
           <div key={item.id} className="item-container">
             <div className="item-details">
-              <p className='userText'><strong>First Name:</strong> {item.first_name}</p>
-              <p className='userText'><strong>Middle Name:</strong> {item.middle_name}</p>
-              <p className='userText'><strong>Last Name:</strong> {item.last_name}</p>
+              <p className='userText'>{item.first_name} {item.middle_name} {item.last_name}</p>
               <div>
                 {item.image && <img src={item.image} alt={`${item.first_name} ${item.last_name}`} className='homeImage'/>}
               </div>
@@ -46,8 +44,8 @@ function UserPage() {
       </div>
 
       <p className='userText'> 
-        Click here to add new tribute page
-        <Link to="/addtribute"> Add a Tribute</Link>
+        Click here to add 
+        <Link to="/addtribute"> New Tribute Page</Link>
       </p>
     </div>
   );
